@@ -27,7 +27,20 @@ final class TestReactorkitUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let button = app.buttons["-"]
+        XCTAssertTrue(button.exists)
+        button.tap()
+
+        
+        let expectation = expectation(description: "labelExp")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+            expectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 2)
+        
+        let label = app.staticTexts.element(matching: .any, identifier: "-1")
+        XCTAssertTrue(label.exists)
     }
 
     func testLaunchPerformance() throws {

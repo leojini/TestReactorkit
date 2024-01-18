@@ -6,6 +6,9 @@
 //
 
 import XCTest
+import RxSwift
+import RxTest
+
 @testable import TestReactorkit
 
 final class TestReactorkitTests: XCTestCase {
@@ -32,5 +35,15 @@ final class TestReactorkitTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
+    func testReactor() throws {
+        let reactor = ViewReactor()
+        reactor.action.onNext(.increase)
+        let expectation = XCTestExpectation(description: "aaa")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 2.0)
+        XCTAssertEqual(reactor.currentState.value, 1)
+    }
 }

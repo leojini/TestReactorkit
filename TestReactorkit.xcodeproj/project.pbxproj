@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD8D5CA92B5637240013101D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AD8D5CA82B5637240013101D /* RxCocoa */; };
+		AD8D5CAB2B5637240013101D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AD8D5CAA2B5637240013101D /* RxSwift */; };
+		ADBDB7C72B563A0D0070E048 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = ADBDB7C62B563A0D0070E048 /* RxCocoa */; };
+		ADBDB7C92B564F560070E048 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = ADBDB7C82B564F560070E048 /* RxTest */; };
 		ADFA597A2B53E55100474573 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA59792B53E55100474573 /* AppDelegate.swift */; };
 		ADFA597C2B53E55100474573 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA597B2B53E55100474573 /* SceneDelegate.swift */; };
 		ADFA597E2B53E55100474573 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA597D2B53E55100474573 /* ViewController.swift */; };
@@ -16,6 +20,8 @@
 		ADFA59912B53E55200474573 /* TestReactorkitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA59902B53E55200474573 /* TestReactorkitTests.swift */; };
 		ADFA599B2B53E55200474573 /* TestReactorkitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA599A2B53E55200474573 /* TestReactorkitUITests.swift */; };
 		ADFA599D2B53E55200474573 /* TestReactorkitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA599C2B53E55200474573 /* TestReactorkitUITestsLaunchTests.swift */; };
+		ADFA59AB2B53E5D600474573 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = ADFA59AA2B53E5D600474573 /* ReactorKit */; };
+		ADFA59B02B53E69F00474573 /* ViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA59AF2B53E69F00474573 /* ViewReactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD1EEE9D2B5632A900DE6A69 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		ADFA59762B53E55100474573 /* TestReactorkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestReactorkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFA59792B53E55100474573 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFA597B2B53E55100474573 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +56,7 @@
 		ADFA59962B53E55200474573 /* TestReactorkitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestReactorkitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFA599A2B53E55200474573 /* TestReactorkitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReactorkitUITests.swift; sourceTree = "<group>"; };
 		ADFA599C2B53E55200474573 /* TestReactorkitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReactorkitUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ADFA59AF2B53E69F00474573 /* ViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD8D5CAB2B5637240013101D /* RxSwift in Frameworks */,
+				AD8D5CA92B5637240013101D /* RxCocoa in Frameworks */,
+				ADFA59AB2B53E5D600474573 /* ReactorKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADBDB7C92B564F560070E048 /* RxTest in Frameworks */,
+				ADBDB7C72B563A0D0070E048 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD1EEE9C2B5632A900DE6A69 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD1EEE9D2B5632A900DE6A69 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ADFA596D2B53E55100474573 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +104,7 @@
 				ADFA598F2B53E55200474573 /* TestReactorkitTests */,
 				ADFA59992B53E55200474573 /* TestReactorkitUITests */,
 				ADFA59772B53E55100474573 /* Products */,
+				AD1EEE9C2B5632A900DE6A69 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +124,7 @@
 				ADFA59792B53E55100474573 /* AppDelegate.swift */,
 				ADFA597B2B53E55100474573 /* SceneDelegate.swift */,
 				ADFA597D2B53E55100474573 /* ViewController.swift */,
+				ADFA59AF2B53E69F00474573 /* ViewReactor.swift */,
 				ADFA597F2B53E55100474573 /* Main.storyboard */,
 				ADFA59822B53E55200474573 /* Assets.xcassets */,
 				ADFA59842B53E55200474573 /* LaunchScreen.storyboard */,
@@ -143,6 +166,11 @@
 			dependencies = (
 			);
 			name = TestReactorkit;
+			packageProductDependencies = (
+				ADFA59AA2B53E5D600474573 /* ReactorKit */,
+				AD8D5CA82B5637240013101D /* RxCocoa */,
+				AD8D5CAA2B5637240013101D /* RxSwift */,
+			);
 			productName = TestReactorkit;
 			productReference = ADFA59762B53E55100474573 /* TestReactorkit.app */;
 			productType = "com.apple.product-type.application";
@@ -161,6 +189,10 @@
 				ADFA598E2B53E55200474573 /* PBXTargetDependency */,
 			);
 			name = TestReactorkitTests;
+			packageProductDependencies = (
+				ADBDB7C62B563A0D0070E048 /* RxCocoa */,
+				ADBDB7C82B564F560070E048 /* RxTest */,
+			);
 			productName = TestReactorkitTests;
 			productReference = ADFA598C2B53E55200474573 /* TestReactorkitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -215,6 +247,10 @@
 				Base,
 			);
 			mainGroup = ADFA596D2B53E55100474573;
+			packageReferences = (
+				ADFA59A92B53E5D600474573 /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				AD8D5CA72B5637240013101D /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = ADFA59772B53E55100474573 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -261,6 +297,7 @@
 				ADFA597E2B53E55100474573 /* ViewController.swift in Sources */,
 				ADFA597A2B53E55100474573 /* AppDelegate.swift in Sources */,
 				ADFA597C2B53E55100474573 /* SceneDelegate.swift in Sources */,
+				ADFA59B02B53E69F00474573 /* ViewReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +639,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD8D5CA72B5637240013101D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		ADFA59A92B53E5D600474573 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD8D5CA82B5637240013101D /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD8D5CA72B5637240013101D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		AD8D5CAA2B5637240013101D /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD8D5CA72B5637240013101D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		ADBDB7C62B563A0D0070E048 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD8D5CA72B5637240013101D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		ADBDB7C82B564F560070E048 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD8D5CA72B5637240013101D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		ADFA59AA2B53E5D600474573 /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADFA59A92B53E5D600474573 /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ADFA596E2B53E55100474573 /* Project object */;
 }
