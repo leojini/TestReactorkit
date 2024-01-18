@@ -1,7 +1,7 @@
 
 Reactorkit 테스트
 
-1. 기본 개념: 유저 Action 발생시 mutate -> reduce 를 통해 state를 반환
+1. 기본 개념: 사용자 Action 발생시 mutate -> reduce 를 통해 state를 반환
 2. mutate: Action을 파라미터로 입력받아 Observable < Mutation > 을 반환
 3. reduce: State, Mutation을 입력받아 State의 내부값 변경 후 State를 반환
 
