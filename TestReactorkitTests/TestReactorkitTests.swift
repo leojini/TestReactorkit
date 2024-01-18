@@ -39,6 +39,8 @@ final class TestReactorkitTests: XCTestCase {
     func testReactor() throws {
         let reactor = ViewReactor()
         reactor.action.onNext(.increase)
+        
+        // increase 액션이 2초 지연되므로 2초 후 값 체크하는 로직 추가
         let expectation = XCTestExpectation(description: "aaa")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             expectation.fulfill()

@@ -27,11 +27,13 @@ final class TestReactorkitUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
+        // decrease 버튼
         let button = app.buttons["-"]
         XCTAssertTrue(button.exists)
         button.tap()
 
         
+        // decrease 버튼이 2초 지연되므로 2초 지연 로직 추가
         let expectation = expectation(description: "labelExp")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             expectation.fulfill()
@@ -39,6 +41,7 @@ final class TestReactorkitUITests: XCTestCase {
         
         waitForExpectations(timeout: 2)
         
+        // decrease 버튼 이 후 값이 -1됐는지 여부 테스트
         let label = app.staticTexts.element(matching: .any, identifier: "-1")
         XCTAssertTrue(label.exists)
     }
