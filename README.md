@@ -1,9 +1,10 @@
 
-Reactorkit 테스트
+Reactorkit
 
-1. 기본 개념: 사용자 Action 발생시 mutate -> reduce 를 통해 State를 반환한다.
-2. mutate: Action을 파라미터로 입력받아 Observable < Mutation > 을 반환한다.
-3. reduce: State, Mutation을 입력받아 State의 내부값 변경 후 State를 반환한다.
+1. 언어: Swift
+2. 기본 개념: 사용자 Action 발생시 mutate -> reduce 를 통해 State를 반환한다.
+3. mutate: Action을 파라미터로 입력받아 Observable < Mutation > 을 반환한다.
+4. reduce: State, Mutation을 입력받아 State의 내부값 변경 후 State를 반환한다.
 
 - increase 버튼: Action.increase를 reactor에 전달한다.
 - decrease 버튼: Action.decrease를 reactor에 전달한다.
