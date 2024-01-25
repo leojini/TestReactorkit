@@ -1,12 +1,10 @@
-
+# Reactorkit
 
 ![image](https://github.com/leojini/TestReactorkit/assets/17540345/ccb3910e-97a6-4554-b958-3351b02bde1e)
 
 
 ![image](https://github.com/leojini/TestReactorkit/assets/17540345/d946afdd-c611-4c8f-b81b-3cf52ba28677)
 
-
-# Reactorkit
 
 1. 언어: Swift
 2. 기본 개념: 사용자 Action 발생시 mutate -> reduce 를 통해 State를 반환한다.
