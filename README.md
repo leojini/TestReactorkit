@@ -34,7 +34,7 @@
    ```
 
 5. reduce: State, Mutation을 입력받아 State의 내부값 변경 후 State를 반환한다.
-   ```
+   ```swift
    func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
@@ -55,7 +55,7 @@
    ```
 
 - increase 버튼: Action.increase를 reactor에 전달한다.
-  ```
+  ```swift
    increseButton.rx.tap
             .map { Reactor.Action.increase }
             .bind(to: reactor.action)
@@ -63,7 +63,7 @@
   ```
 
 - decrease 버튼: Action.decrease를 reactor에 전달한다.
-  ```
+  ```swift
    decreaseButton.rx.tap
             .map { Reactor.Action.decrease }
             .bind(to: reactor.action)
@@ -71,7 +71,7 @@
   ```
 
 - reactor의 value 상태 변경시 valueLabel에 설정한다.
-  ```
+  ```swift
    reactor.state.map { $0.value }
             .distinctUntilChanged()
             .map { "\($0)"}
@@ -80,7 +80,7 @@
   ```
 
 - reactor의 isLoading 상태 변경시 activityIndicatorView의 애니메이션 설정한다.
-  ```
+  ```swift
    reactor.state.map { $0.isLoading }
             .distinctUntilChanged()
             .bind(to: activityIndicatorView.rx.isAnimating)
@@ -89,7 +89,7 @@
 
 - reactor의 alertMessage인 경우 pulse를 사용하여 값이 새롭게 할당되는 경우에 항상 이벤트를 발생시킨다.
   상태 변경이 아니라 항상 새롭게 이벤트를 발생시켜야 할 경우에는 pulse를 사용한다.
-  ```
+  ```swift
    reactor.pulse(\.$alertMessage)
             .compactMap { $0 }
             .subscribe(onNext: { [weak self] message in
@@ -115,7 +115,7 @@
   ```
 
 - 유닛 테스트 코드 추가
-  ```
+  ```swift
    func testReactor() throws {
         let reactor = ViewReactor()
         reactor.action.onNext(.increase)
