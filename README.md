@@ -9,7 +9,7 @@
 1. 언어: Swift
 2. 기본 개념: 사용자 Action 발생시 mutate -> reduce 를 통해 State를 반환한다.
 3. mutate: Action을 파라미터로 입력받아 Observable < Mutation > 을 반환한다.
-   ```
+   ```swift
    func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .increase:
