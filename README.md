@@ -90,6 +90,12 @@
 - reactor의 alertMessage인 경우 pulse를 사용하여 값이 새롭게 할당되는 경우에 항상 이벤트를 발생시킨다.
   상태 변경이 아니라 항상 새롭게 이벤트를 발생시켜야 할 경우에는 pulse를 사용한다.
   ```swift
+  struct State {
+     var value: Int
+     var isLoading: Bool
+     @Pulse var alertMessage: String?
+    }
+  
    reactor.pulse(\.$alertMessage)
             .compactMap { $0 }
             .subscribe(onNext: { [weak self] message in
@@ -107,11 +113,7 @@
             })
             .disposed(by: disposeBag)
 
-  struct State {
-        var value: Int
-        var isLoading: Bool
-        @Pulse var alertMessage: String?
-    }
+  
   ```
 
 - 유닛 테스트 코드 추가
