@@ -34,27 +34,124 @@
    ```
 
 5. reduce: State, Mutation을 입력받아 State의 내부값 변경 후 State를 반환한다.
-   ![image](https://github.com/leojini/TestReactorkit/assets/17540345/4bc9f9df-100d-4502-8f5a-84a091cfccb8)
+   ```
+   func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case .increaseValue:
+            state.value += 1
+            
+        case .decreaseValue:
+            state.value -= 1
+            
+        case let .setLoading(isLoading):
+            state.isLoading = isLoading
+            
+        case let .setAlertMessage(message):
+            state.alertMessage = message
+        }
+        return state
+    }
+   ```
 
 - increase 버튼: Action.increase를 reactor에 전달한다.
-  ![image](https://github.com/leojini/TestReactorkit/assets/17540345/a24e2afe-6c06-43c7-b9e9-969836a3e313)
+  ```
+   increseButton.rx.tap
+            .map { Reactor.Action.increase }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+  ```
 
 - decrease 버튼: Action.decrease를 reactor에 전달한다.
-  ![image](https://github.com/leojini/TestReactorkit/assets/17540345/1ab28f43-3641-43e3-8a98-033dc1629dad)
+  ```
+   decreaseButton.rx.tap
+            .map { Reactor.Action.decrease }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+  ```
 
 - reactor의 value 상태 변경시 valueLabel에 설정한다.
-  ![image](https://github.com/leojini/TestReactorkit/assets/17540345/7252e3e0-bd0e-4b82-aca3-3b77d49740a1)
+  ```
+   reactor.state.map { $0.value }
+            .distinctUntilChanged()
+            .map { "\($0)"}
+            .bind(to: valueLabel.rx.text)
+            .disposed(by: disposeBag)
+  ```
 
 - reactor의 isLoading 상태 변경시 activityIndicatorView의 애니메이션 설정한다.
-  ![image](https://github.com/leojini/TestReactorkit/assets/17540345/69a2dce5-c6f7-4b40-8bef-a4d50625f2d4)
+  ```
+   reactor.state.map { $0.isLoading }
+            .distinctUntilChanged()
+            .bind(to: activityIndicatorView.rx.isAnimating)
+            .disposed(by: disposeBag)
+  ```
 
 - reactor의 alertMessage인 경우 pulse를 사용하여 값이 새롭게 할당되는 경우에 항상 이벤트를 발생시킨다.
   상태 변경이 아니라 항상 새롭게 이벤트를 발생시켜야 할 경우에는 pulse를 사용한다.
-  ![image](https://github.com/leojini/TestReactorkit/assets/17540345/823978e2-52fa-4fb2-922c-0b0baff6bbe7)
-  ![image](https://github.com/leojini/TestReactorkit/assets/17540345/7ad685a8-6a3f-4ca7-87c8-5b82d3af0faf)
+  ```
+   reactor.pulse(\.$alertMessage)
+            .compactMap { $0 }
+            .subscribe(onNext: { [weak self] message in
+                let alertController = UIAlertController(
+                    title: nil,
+                    message: message,
+                    preferredStyle: .alert
+                    )
+                alertController.addAction(UIAlertAction(
+                    title: "OK",
+                    style: .default,
+                    handler: nil
+                ))
+                self?.present(alertController, animated: true)
+            })
+            .disposed(by: disposeBag)
+
+  struct State {
+        var value: Int
+        var isLoading: Bool
+        @Pulse var alertMessage: String?
+    }
+  ```
 
 - 유닛 테스트 코드 추가
-  ![image](https://github.com/leojini/TestReactorkit/assets/17540345/55355630-f852-4bf0-bb4f-3157fa219fac)
-  ![image](https://github.com/leojini/TestReactorkit/assets/17540345/08e21b21-e9c4-4e35-8a8f-b1b2c0e17466)
+  ```
+   func testReactor() throws {
+        let reactor = ViewReactor()
+        reactor.action.onNext(.increase)
+        
+        // increase 액션이 2초 지연되므로 2초 후 값 체크하는 로직 추가
+        let expectation = XCTestExpectation(description: "aaa")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 2.0)
+        XCTAssertEqual(reactor.currentState.value, 1)
+    }
+
+  func testExample() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+
+        // decrease 버튼
+        let button = app.buttons["-"]
+        XCTAssertTrue(button.exists)
+        button.tap()
+
+        
+        // decrease 버튼이 2초 지연되므로 2초 지연 로직 추가
+        let expectation = expectation(description: "labelExp")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+            expectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 2)
+        
+        // decrease 버튼 이 후 값이 -1됐는지 여부 테스트
+        let label = app.staticTexts.element(matching: .any, identifier: "-1")
+        XCTAssertTrue(label.exists)
+    }
+  ```
 
 
