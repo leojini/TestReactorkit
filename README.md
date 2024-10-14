@@ -9,7 +9,29 @@
 1. 언어: Swift
 2. 기본 개념: 사용자 Action 발생시 mutate -> reduce 를 통해 State를 반환한다.
 3. mutate: Action을 파라미터로 입력받아 Observable < Mutation > 을 반환한다.
-   ![image](https://github.com/leojini/TestReactorkit/assets/17540345/5dd28983-e0e1-4876-8d74-f90eff1be4db)
+   ```
+   func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .increase:
+            return Observable.concat([
+                Observable.just(Mutation.setLoading(true)),
+                Observable.just(Mutation.increaseValue).delay(.milliseconds(2000), scheduler: MainScheduler.instance),
+                // Observable.just(Mutation.increaseValue),
+                Observable.just(Mutation.setLoading(false)),
+                Observable.just(Mutation.setAlertMessage("increased!")),
+            ])
+            
+        case .decrease:
+            return Observable.concat([
+                Observable.just(Mutation.setLoading(true)),
+                Observable.just(Mutation.decreaseValue).delay(.milliseconds(2000), scheduler: MainScheduler.instance),
+                // Observable.just(Mutation.decreaseValue),
+                Observable.just(Mutation.setLoading(false)),
+                Observable.just(Mutation.setAlertMessage("descreased!")),
+            ])
+        }
+    }
+   ```
 
 5. reduce: State, Mutation을 입력받아 State의 내부값 변경 후 State를 반환한다.
    ![image](https://github.com/leojini/TestReactorkit/assets/17540345/4bc9f9df-100d-4502-8f5a-84a091cfccb8)
